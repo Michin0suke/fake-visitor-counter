@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./style.css"/>
+  </head>
+  <body>
+    <h1>Fake Visitor Counter</h1>
+    <p>現在、<b class="count_of_visitors"></b>人が訪問しています。</p>
+    <br/>
+    <h2>仕様</h2>
+    <p>初期値は35〜40までのランダム、数値の変化は5秒ごとに</p>
+    <ul>
+      <li><span class="per-li blue">-2</span>: 2%</li>
+      <li><span class="per-li blue">-1</span>: 15%</li>
+      <li><span class="per-li red">+1</span>: 15%</li>
+      <li><span class="per-li red">+2</span>: 2%</li>
+    </ul>
+    <p>の確率で変化します。</p>
+    <p>変化の上限は50、加減は25としています。</p>
+    <p>リロードすると数値が変わってバレるので、Cookieに値を保存し、リロードしてもバレないようにしています。</p>
+    <br/>
+    <h2>使い方</h2>
+    <p>まず、HTMLに<span class="term">count_of_visitors</span>というタグを作ります。</p>
+    <p>次に、<span class="term">fetch_count_of_visitors.js</span>を<span class="term">script</span>タグで導入すれば完了です。</p>
+    <p>設定は簡単にカスタマイズすることができます。</p>
+    <p><span class="term">fetch_count_of_visitors.js</span>の中にある変数<span class="term">config</span>を書き換えることで、設定を変更できます。</p>
+    <br/>
+    <pre>
+        var config = {
+          // 初期値の範囲（整数）
+          initRange: {
+            min: 35,
+            max: 40
+          },
+          // 変化の範囲（整数）
+          variationRange: {
+            min: 25,
+            max: 50
+          },
+          // 変化の確率（合計が100未満になる整数）
+          percentage: {
+            '-2': 2,
+            '-1': 15,
+            '+1': 15,
+            '+2': 2
+          }
+        };
+    </pre>
+    <div class="button">ソースコードはこちら<a href="./fetch_count_of_visitors.js"></a></div>
+    <p>このページ自体ががサンプルコードなので、Chromeなどのインスペクタで見てみてください。</p>
+    <script src="./fetch_count_of_visitors.js"></script>
+  </body>
+</html>
